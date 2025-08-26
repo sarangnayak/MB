@@ -1,0 +1,155 @@
+/* --- Video Background Styles --- */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* General Styles & Background */
+body, html {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 200;
+    min-height: 100vh;
+}
+
+/* Landing Page Layout */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+/* Universal Text Shadow for Readability */
+h1, h2, p, .timer-unit, footer p {
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8), 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+h1, h2 {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Content Group Styling */
+.content-group {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 80px;
+}
+
+/* Title Group */
+.title-group h1 {
+    font-size: 4rem;
+    margin: 0;
+    font-weight: 100;
+}
+.title-group p {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: 200;
+}
+
+/* Timer Group */
+.timer-group h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 200;
+}
+.timer-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.timer-unit {
+    font-size: 1rem;
+    font-weight: 200;
+}
+.timer-unit span {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 100;
+}
+
+/* Quote */
+.quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.6;
+    font-weight: 200;
+}
+
+/* Map Group */
+.map-group h2 {
+    font-weight: 200;
+}
+#map {
+    width: 100%;
+    height: 350px;
+    border-radius: 15px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Music Group */
+.music-group h2 {
+    font-weight: 200;
+}
+.music-group iframe {
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+}
+
+/* --- Footer Styles (Updated for Anime.js) --- */
+footer p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    font-weight: 100;
+    /* Removed old animation properties */
+}
+
+/* --- Anime.js Animation Styles (New) --- */
+.ml12 {
+  letter-spacing: 0.2em; /* Adjusted for a more subtle look */
+}
+.ml12 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    /* ... existing responsive styles ... */
+    .landing-page {
+        padding: 30px 15px;
+    }
+    .content-group {
+        margin-bottom: 50px;
+    }
+    .title-group h1 {
+        font-size: 2.8rem;
+    }
+    .timer-unit span {
+        font-size: 2.2rem;
+    }
+    .timer-grid {
+        gap: 15px;
+    }
+    .quote {
+        font-size: 1.1rem;
+    }
+    #map {
+        height: 300px;
+    }
+    .music-group iframe {
+        height: 400px;
+    }
+}
