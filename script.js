@@ -37,17 +37,35 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimer, 1000);
 
 
-    // --- Leaflet.js Map ---
+    // --- Leaflet.js Map with New Grey Theme ---
     const herLocation = [20.28, 85.82];
     const myLocation = [22.75, 77.72];
     const centerPoint = [21.5, 81.7];
 
-    const map = L.map('map').setView(centerPoint, 5);
-
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    // --- Define our different map layers ---
+    const greyMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    });
+    
+    const satelliteMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri'
-    }).addTo(map);
+    });
 
+    // Initialize the map with the new grey map as the default
+    const map = L.map('map', {
+        center: centerPoint,
+        zoom: 5,
+        layers: [greyMap] // Set the default layer here
+    });
+
+    // --- Create the layer control object ---
+    const baseMaps = {
+        "Grey View": greyMap,
+        "Satellite View": satelliteMap
+    };
+    L.control.layers(baseMaps).addTo(map);
+
+    // Define a reliable SVG map pin icon
     const svgIcon = L.divIcon({
         html: `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
@@ -62,15 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
     L.marker(myLocation, {icon: svgIcon}).addTo(map).bindPopup('Bala 👱🏻‍♂️');
 
     const latlngs = [herLocation, myLocation];
-    L.polyline(latlngs, {color: '#FFF5E1', weight: 3}).addTo(map);
+    L.polyline(latlngs, {color: '#ffe4afff', weight: 1.9}).addTo(map);
 
     const distance = L.latLng(herLocation).distanceTo(L.latLng(myLocation));
     document.getElementById('distance').textContent = Math.round(distance / 1000);
 
-
     // --- Anime.js Credit Animation ---
     document.querySelectorAll('.ml12').forEach((textWrapper, index) => {
-        // Wrap every letter and emoji in a span. The 'u' flag fixes the emoji issue.
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/gu, "<span class='letter'>$&</span>");
         
         anime.timeline({loop: false})
@@ -84,5 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: (el, i) => (index * 500) + 500 + 30 * i 
           });
     });
-
 });
