@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         iconAnchor: [18, 36]
     });
     
-    L.marker(herLocation, {icon: svgIcon}).addTo(map).bindPopup('Her ❤️');
-    L.marker(myLocation, {icon: svgIcon}).addTo(map).bindPopup('Me 💙');
+    L.marker(herLocation, {icon: svgIcon}).addTo(map).bindPopup('Maao 👩🏻‍🦳');
+    L.marker(myLocation, {icon: svgIcon}).addTo(map).bindPopup('Bala 👱🏻‍♂️');
 
     const latlngs = [herLocation, myLocation];
     L.polyline(latlngs, {color: '#FFF5E1', weight: 3}).addTo(map);
