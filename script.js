@@ -20,61 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('months').textContent = months.toLocaleString();
     }
     
-   / --- Daily Quote ---
-const quotes = [
-"Distance is not for the fearful, it is for the bold. It's for those who are willing to spend a lot of time alone in exchange for a little time with the one they love.",
-"The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
-"I exist in two places, here and where you are.",
-"Love will travel as far as you let it. It has no limits.",
-"Together forever, never apart. Maybe in distance, but never in heart."
-"The world was just a place until you, Maao. Now it’s home."
-"My life was like a Monday morning in November before you came along with the promise of a bank holiday in May."
-"You turned the quiet hum of my life into a symphony, Maao."
-"I thought I was quite content, and then you showed up and taught me the meaning of properly chuffed."
-"Everything was in black and white, and then you, Maao, became my favourite colour."
-"You are the brilliant, unexpected plot twist in my otherwise predictable story."
-"Life with you is like finding a tenner in an old coat pocket – a constant, brilliant surprise."
-"My internal weather forecast was permanently set to 'drizzle' until I met you, Maao."
-"You’re the 'everything's sorted now' to my cluttered mind."
-"I didn't know a heart could be this settled, this utterly calm, until you, Maao."
-"You make the mundane feel like a smashing adventure."
-"All the best bits of my day have you in them."
-"You’re the reason my tea tastes better in the morning."
-"My compass was spinning aimlessly. Then it found its true north: you, Maao."
-"You make me want to be a better bloke. Not just for you, but because of you."
-"I fancy you more than a bacon butty on a Sunday morning, Maao."
-"You’re completely crackers, and I’m utterly bonkers about you."
-"If you were a biscuit, you’d be a top-tier chocolate hobnob."
-"Are you a parking ticket? Because you’ve got 'fine' written all over you, and you’re distracting me something rotten."
-"I’m not saying I’m lost without you, but the satnav of my heart definitely relies on your signal, Maao."
-"You're my favourite notification."
-"Let's just stay in, get a takeaway, and be brilliant together."
-"You're the one I want to be knackered with after a long week."
-"I’d even queue for you, Maao. And that’s saying something."
-"You're the gin to my tonic – making everything significantly better."
-"Life with you is less 'stiff upper lip' and more 'laughing till it hurts'."
-"I was going to do something productive today, but then I thought of you, Maao. A much better use of my time."
-"You’ve made me ridiculously, soppily soft. It’s brilliant."
-"You're the only person I'd share my last Rolo with. No questions asked."
-"Our love story is my favourite programme on the telly of my mind."
-"In a world of fleeting moments, you, Maao, are my one constant. My anchor."
-"Loving you feels like coming home after a long journey and putting the kettle on."
-"My soul gave a quiet little sigh of 'there you are' the day I met you."
-"To me, Maao, your name is another word for happiness."
-"You are the quiet, steady warmth in the core of my being."
-"I don't just love you; I find you utterly fascinating."
-"You are the loveliest thought that has ever nested in my mind."
-"Holding your hand feels like the most natural, important thing my hand could ever do."
-"With you, Maao, I don't have to pretend. I can just be."
-"You are the poetry I never knew how to write."
-"In the grand, sprawling library of my life, your chapter is the one I read over and over."
-"It’s not about grand gestures. It's the quiet Tuesday evenings with you that I treasure most."
-"My love for you isn't loud. It's a steady, reliable thing, like the shipping forecast."
-"You, Maao, are my peace in a world that can be absolute chaos."
-"You are proof that the best things in life aren't things at all."
-"If my heart were a garden, you’d be the hardy perennial that blooms all year round."
-"You are the calm harbour to my stormy sea."
-];
+    // --- Daily Quote ---
+    const quotes = [
+        "Distance is not for the fearful, it is for the bold. It's for those who are willing to spend a lot of time alone in exchange for a little time with the one they love.",
+        "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
+        "I exist in two places, here and where you are.",
+        "Love will travel as far as you let it. It has no limits.",
+        "Together forever, never apart. Maybe in distance, but never in heart."
+    ];
     
     const totalDaysForQuote = Math.floor((new Date().getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const quoteIndex = totalDaysForQuote % quotes.length;
