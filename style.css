@@ -126,7 +126,7 @@ footer p {
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 481px) {
     /* ... existing responsive styles ... */
     .landing-page {
         padding: 30px 15px;
