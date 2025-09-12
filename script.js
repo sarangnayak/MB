@@ -1,6 +1,34 @@
-```javascript
 document.addEventListener('DOMContentLoaded', () => {
 
+    const startDate = new Date(Date.UTC(2025, 7, 4, 0, 0, 0));
+
+    // --- Live Timer ---
+    function updateTimer() {
+        const now = new Date();
+        const diff = now.getTime() - startDate.getTime();
+        const totalSeconds = Math.floor(diff / 1000);
+        const totalHours = Math.floor(totalSeconds / 3600);
+        const totalDays = Math.floor(totalHours / 24);
+        const totalWeeks = Math.floor(totalDays / 7);
+        const months = (now.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + (now.getUTCMonth() - startDate.getUTCMonth());
+
+        const elements = {
+            'seconds': totalSeconds,
+            'hours': totalHours,
+            'days': totalDays,
+            'weeks': totalWeeks,
+            'months': months
+        };
+
+        for (const [id, value] of Object.entries(elements)) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.textContent = value.toLocaleString();
+            }
+        }
+    }
+
+    // --- Daily Quote ---
     const quotes = [
         "Distance is not for the fearful, it is for the bold. It's for those who are willing to spend a lot of time alone in exchange for a little time with the one they love.",
         "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
@@ -193,36 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
         "With you is where I want to be, now and for all the days after.",
         "You are my grandest adventure and my safest harbour, all at once. My forever Maao."
     ];
-
-    const startDate = new Date(Date.UTC(2025, 7, 4, 0, 0, 0));
-
-    function updateTimer() {
-        const now = new Date();
-        const diff = now.getTime() - startDate.getTime();
-        const totalSeconds = Math.floor(diff / 1000);
-        const totalHours = Math.floor(totalSeconds / 3600);
-        const totalDays = Math.floor(totalHours / 24);
-        const totalWeeks = Math.floor(totalDays / 7);
-        const months = (now.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + (now.getUTCMonth() - startDate.getUTCMonth());
-        
-        const elements = {
-            'seconds': totalSeconds,
-            'hours': totalHours,
-            'days': totalDays,
-            'weeks': totalWeeks,
-            'months': months
-        };
-
-        for (const [id, value] of Object.entries(elements)) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.textContent = value.toLocaleString();
-            }
-        }
-    }
     
     const totalDaysForQuote = Math.floor((new Date().getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const quoteIndex = totalDaysForQuote % quotes.length;
+    
     const dailyQuoteEl = document.getElementById('daily-quote');
     if (dailyQuoteEl) {
         dailyQuoteEl.textContent = `"${quotes[quoteIndex]}"`;
@@ -231,6 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTimer();
     setInterval(updateTimer, 1000);
 
+
+    // --- Leaflet.js Map with New Grey Theme ---
     const herLocation = [20.28, 85.82];
     const myLocation = [22.75, 77.72];
     const centerPoint = [21.5, 81.7];
@@ -280,6 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Anime.js Credit Animation ---
     document.querySelectorAll('.ml12').forEach((textWrapper, index) => {
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/gu, "<span class='letter'>$&</span>");
         
@@ -295,4 +300,3 @@ document.addEventListener('DOMContentLoaded', () => {
           });
     });
 });
-```
