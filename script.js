@@ -1,9 +1,6 @@
-// --- Wait for the page to load before running scripts ---
+```javascript
 document.addEventListener('DOMContentLoaded', () => {
 
-    // A better approach for the quotes array is to have one quote per array element.
-    // This allows the daily quote logic to work as intended.
-    // Your original code had all quotes in a single string, which would break the logic.
     const quotes = [
         "Distance is not for the fearful, it is for the bold. It's for those who are willing to spend a lot of time alone in exchange for a little time with the one they love.",
         "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
@@ -197,26 +194,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "You are my grandest adventure and my safest harbour, all at once. My forever Maao."
     ];
 
-    // Initialize startDate outside the timer function to avoid redefining it on every interval.
-    // The use of Date.UTC is good for consistency.
     const startDate = new Date(Date.UTC(2025, 7, 4, 0, 0, 0));
 
-    // --- Live Timer ---
     function updateTimer() {
         const now = new Date();
         const diff = now.getTime() - startDate.getTime();
-
-        // Use a single calculation for totalSeconds to prevent potential rounding issues.
         const totalSeconds = Math.floor(diff / 1000);
         const totalHours = Math.floor(totalSeconds / 3600);
         const totalDays = Math.floor(totalHours / 24);
         const totalWeeks = Math.floor(totalDays / 7);
-
-        // Calculate months based on full date objects for greater accuracy.
-        // This accounts for months with different numbers of days.
         const months = (now.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + (now.getUTCMonth() - startDate.getUTCMonth());
         
-        // Use a more robust check to ensure elements exist before updating them.
         const elements = {
             'seconds': totalSeconds,
             'hours': totalHours,
@@ -233,8 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- Daily Quote ---
-    // This logic is correct now that the quotes array is properly formatted.
     const totalDaysForQuote = Math.floor((new Date().getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const quoteIndex = totalDaysForQuote % quotes.length;
     const dailyQuoteEl = document.getElementById('daily-quote');
@@ -242,19 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dailyQuoteEl.textContent = `"${quotes[quoteIndex]}"`;
     }
 
-    // Call updateTimer immediately to avoid a 1-second delay on page load.
     updateTimer();
-    // Use a more modern and consistent way to set up the interval.
     setInterval(updateTimer, 1000);
 
-
-    // --- Leaflet.js Map with New Grey Theme ---
-    // Variable names are a bit inconsistent, but they work.
     const herLocation = [20.28, 85.82];
     const myLocation = [22.75, 77.72];
     const centerPoint = [21.5, 81.7];
 
-    // --- Define our different map layers ---
     const greyMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     });
@@ -265,21 +245,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mapEl = document.getElementById('map');
     if (mapEl) {
-        // Initialize the map with the new grey map as the default
         const map = L.map('map', {
             center: centerPoint,
             zoom: 5,
             layers: [greyMap]
         });
 
-        // --- Create the layer control object ---
         const baseMaps = {
             "Grey View": greyMap,
             "Satellite View": satelliteMap
         };
         L.control.layers(baseMaps).addTo(map);
 
-        // Define a reliable SVG map pin icon
         const svgIcon = L.divIcon({
             html: `
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
@@ -303,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Anime.js Credit Animation ---
     document.querySelectorAll('.ml12').forEach((textWrapper, index) => {
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/gu, "<span class='letter'>$&</span>");
         
@@ -319,3 +295,4 @@ document.addEventListener('DOMContentLoaded', () => {
           });
     });
 });
+```
