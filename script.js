@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startDate = new Date(Date.UTC(2025, 7, 4, 0, 0, 0));
 
-    // --- Live Timer ---
+    // --- Live Timer ----
     function updateTimer() {
         const now = new Date();
         const diff = now.getTime() - startDate.getTime();
